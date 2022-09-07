@@ -1,3 +1,4 @@
+import 'package:eprodajamobile/providers/korisnici_provider.dart';
 import 'package:eprodajamobile/providers/product_provider.dart';
 import 'package:eprodajamobile/screens/cart/cart_screen.dart';
 import 'package:eprodajamobile/screens/products/product_details_screen.dart';
@@ -27,7 +28,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
   CartProvider? _cartProvider = null;
   List<Product> data = [];
   TextEditingController _searchController = TextEditingController();
-  TextEditingController _searchPriceController = TextEditingController();
 
   @override
   void initState() {
@@ -46,6 +46,20 @@ class _ProductListScreenState extends State<ProductListScreen> {
     });
   }
 
+  bool Is_Number(String number) {
+    if (number == null || number.isEmpty) {
+      return false;
+    }
+
+    var nums = num.tryParse(number);
+
+    if (nums == null) {
+      return false;
+    }
+
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     print("called build $data");
@@ -57,7 +71,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
           children: [
             _buildHeader(),
             _buildProductSearch(),
-            // _buildProductPriceSearch(),
             Container(
               height: 200,
               child: GridView(
@@ -87,25 +100,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
     );
   }
 
-  bool isNumericUsing_tryParse(String string) {
-    // Null or empty string is not a number
-    if (string == null || string.isEmpty) {
-      return false;
-    }
-
-    // Try to parse input string to number.
-    // Both integer and double work.
-    // Use int.tryParse if you want to check integer only.
-    // Use double.tryParse if you want to check double only.
-    final number = num.tryParse(string);
-
-    if (number == null) {
-      return false;
-    }
-
-    return true;
-  }
-
   Widget _buildProductSearch() {
     return Row(
       children: [
@@ -115,15 +109,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
             child: TextField(
               controller: _searchController,
               onSubmitted: (value) async {
-                if (isNumericUsing_tryParse(_searchController.text)) {
-                  var priceData =
-                      await _productProvider?.get({'cijena': value});
+                if (Is_Number(_searchController.text)) {
+                  var tmpData = await _productProvider?.get({'cijena': value});
                   setState(() {
-                    data = priceData!;
+                    data = tmpData!;
                   });
                 } else {
                   var tmpData = await _productProvider?.get({'naziv': value});
-
                   setState(() {
                     data = tmpData!;
                   });
@@ -138,26 +130,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ),
         ),
-        // Expanded(
-        //   child: Container(
-        //     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-        //     child: TextField(
-        //       controller: _searchPriceController,
-        //       onSubmitted: (value) async {
-        //         var tmpData = await _productProvider?.get({'cijena': value});
-        //         setState(() {
-        //           data = tmpData!;
-        //         });
-        //       },
-        //       decoration: InputDecoration(
-        //           hintText: "Price",
-        //           prefixIcon: Icon(Icons.search),
-        //           border: OutlineInputBorder(
-        //               borderRadius: BorderRadius.circular(10),
-        //               borderSide: BorderSide(color: Colors.grey))),
-        //     ),
-        //   ),
-        // ),
         Container(
           padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: IconButton(
@@ -170,47 +142,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
               });
             },
           ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildProductPriceSearch() {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: TextField(
-              controller: _searchPriceController,
-              onSubmitted: (value) async {
-                var tmpData = await _productProvider?.get({'cijena': value});
-                setState(() {
-                  data = tmpData!;
-                });
-              },
-              decoration: InputDecoration(
-                  hintText: "Price",
-                  prefixIcon: Icon(Icons.search),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(color: Colors.grey))),
-            ),
-          ),
-        ),
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: IconButton(
-            icon: Icon(Icons.filter_list),
-            onPressed: () async {
-              var tmpData = await _productProvider
-                  ?.get({'cijena': _searchPriceController.text});
-              setState(() {
-                data = tmpData!;
-              });
-            },
-          ),
-        ),
+        )
       ],
     );
   }
@@ -228,10 +160,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     onTap: () {
                       Navigator.pushNamed(context,
                           "${ProductDetailsScreen.routeName}/${x.proizvodId}");
-                      // Navigator.push(
-                      //     context,
-                      //     MaterialPageRoute(
-                      //         builder: (context) => ProductDetailsScreen()));
                     },
                     child: Container(
                       height: 100,

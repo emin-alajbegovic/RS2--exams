@@ -12,8 +12,8 @@ using eProdaja.Services.Database;
 namespace eProdaja.Services.Migrations
 {
     [DbContext(typeof(eProdajaContext))]
-    [Migration("20220821175148_added")]
-    partial class added
+    [Migration("20220907145956_new table added")]
+    partial class newtableadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -377,14 +377,14 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KorisnikUlogaId = 1,
-                            DatumIzmjene = new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumIzmjene = new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 1,
                             UlogaId = 1
                         },
                         new
                         {
                             KorisnikUlogaId = 2,
-                            DatumIzmjene = new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumIzmjene = new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             UlogaId = 1
                         });
@@ -443,7 +443,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 1,
-                            DatumRegistracije = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1439),
+                            DatumRegistracije = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5171),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 1",
                             KorisnickoIme = "test",
@@ -455,7 +455,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 2,
-                            DatumRegistracije = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1454),
+                            DatumRegistracije = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5244),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 2",
                             KorisnickoIme = "test1",
@@ -467,7 +467,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 3,
-                            DatumRegistracije = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1462),
+                            DatumRegistracije = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5292),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 3",
                             KorisnickoIme = "test2",
@@ -589,7 +589,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 1,
                             BrojNarudzbe = "344-2018",
-                            Datum = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1512),
+                            Datum = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5346),
                             KupacId = 1,
                             Otkazano = false,
                             Status = true
@@ -598,7 +598,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 2,
                             BrojNarudzbe = "345-2018",
-                            Datum = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1525),
+                            Datum = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5400),
                             KupacId = 2,
                             Otkazano = false,
                             Status = true
@@ -607,7 +607,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 3,
                             BrojNarudzbe = "346-2018",
-                            Datum = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1533),
+                            Datum = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5448),
                             KupacId = 2,
                             Otkazano = false,
                             Status = true
@@ -616,7 +616,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 4,
                             BrojNarudzbe = "347-2018",
-                            Datum = new DateTime(2022, 8, 21, 19, 51, 47, 582, DateTimeKind.Local).AddTicks(1541),
+                            Datum = new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5496),
                             KupacId = 3,
                             Otkazano = false,
                             Status = true

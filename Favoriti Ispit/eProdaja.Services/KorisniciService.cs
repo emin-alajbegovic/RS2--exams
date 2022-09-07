@@ -123,5 +123,17 @@ namespace eProdaja.Services
 
             return Mapper.Map<Model.Korisnici>(entity);
         }
+
+        public Model.Korisnici GetByUsername(string username)
+        {
+            var entity = Context.Korisnicis.FirstOrDefault(x => x.KorisnickoIme == username);
+
+            if (entity == null)
+            {
+                return null;
+            }
+
+            return Mapper.Map<Model.Korisnici>(entity);
+        }
     }
 }

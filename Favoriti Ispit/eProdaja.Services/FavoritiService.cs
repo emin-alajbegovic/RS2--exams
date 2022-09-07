@@ -2,6 +2,7 @@
 using eProdaja.Model.Requests;
 using eProdaja.Model.SearchObjects;
 using eProdaja.Services.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,16 +17,17 @@ namespace eProdaja.Services
         {
         }
 
-        public override IQueryable<Favoriti> AddFilter(IQueryable<Favoriti> query, FavoritiSearchObject search = null)
+        public IEnumerable<Model.Favoriti> GetAllUsersByProizvod(int proizvodId)
         {
-            var filteredQuery = base.AddFilter(query, search);
+            var users = Context.Favoriti.Include(x => x.Korisnik).Where(y => y.ProizvodId == proizvodId).ToList();
 
-            if (search.ProizvodId != null)
+            if (users == null)
             {
-                filteredQuery = filteredQuery.Where(x => x.ProizvodId == search.ProizvodId);
+                return null;
             }
 
-            return filteredQuery;
+            return Mapper.Map<IEnumerable<Model.Favoriti>>(users);
         }
+
     }
 }

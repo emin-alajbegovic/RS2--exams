@@ -9,6 +9,5 @@ namespace eProdaja.Model.SearchObjects
         public string Naziv { get; set; }
         public string Sifra { get; set; }
         public decimal Cijena { get; set; }
-        //public decimal CijenaNaziv { get; set; }
     }
 }

@@ -1,6 +1,10 @@
+import 'package:eprodajamobile/model/emin.dart';
 import 'package:eprodajamobile/model/favoriti.dart';
+import 'package:eprodajamobile/model/korisnici.dart';
 import 'package:eprodajamobile/model/product.dart';
+import 'package:eprodajamobile/providers/emin_provider.dart';
 import 'package:eprodajamobile/providers/favoriti_provider.dart';
+import 'package:eprodajamobile/providers/korisnici_provider.dart';
 import 'package:eprodajamobile/providers/product_provider.dart';
 import 'package:eprodajamobile/utils/util.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,31 +27,48 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   ProductProvider? _productProvider = null;
   FavoritiProvider? _favoritiProvider = null;
+  EminProvider? _eminProvider = null;
   Product? product = null;
-  List<Favoriti> favoriti = [];
+  KorisniciProvider? _korisniciProvider = null;
+  TextEditingController _searchController = TextEditingController();
+  Korisnici? korisnik = null;
+  List<Emin> lists = [];
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _productProvider = context.read<ProductProvider>();
     _favoritiProvider = context.read<FavoritiProvider>();
+    _korisniciProvider = context.read<KorisniciProvider>();
+    _eminProvider = context.read<EminProvider>();
     print("called initState");
     loadData();
+    loadUserData();
   }
 
   Future loadData() async {
-    var tmpData = await _productProvider?.getDetailsById(int.parse(widget.id));
+    var tmpData = await _productProvider?.getByDetailsId(int.parse(widget.id));
     setState(() {
       product = tmpData!;
     });
-    loadFavoritesByKorisnik();
   }
 
-  Future loadFavoritesByKorisnik() async {
-    var tmpFavorites = await _favoritiProvider?.get({"proizvodId": widget.id});
-    print(tmpFavorites);
+  Future loadUserData() async {
+    var tmpData = await _korisniciProvider
+        ?.getUserByUsername(Authorization.username.toString());
+    print(tmpData);
     setState(() {
-      favoriti = tmpFavorites!;
+      korisnik = tmpData!;
+    });
+    loadUserFavoritesData();
+  }
+
+  Future loadUserFavoritesData() async {
+    var tmpData =
+        await _eminProvider?.getByUserProizvodId(int.parse(widget.id));
+    setState(() {
+      lists = tmpData!;
     });
   }
 
@@ -55,61 +76,55 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget build(BuildContext context) {
     return MasterScreenWidget(
       child: Center(
-        child: SingleChildScrollView(
-          child: _buildProductCard(),
-        ),
+        child: SingleChildScrollView(child: _buildProductList()),
       ),
     );
   }
 
-  Widget _buildProductCard() {
+  Widget _buildProductList() {
     if (product == null) {
       return Text("loading...");
     }
 
     Widget list = Container(
-      child: Column(
-        children: [
-          Positioned(child: imageFromBase64String(product!.slika!)),
-          Text(product!.naziv!),
-          Text(product!.cijena!.toString()),
-          TextButton(
-              onPressed: () {
-                var favorit = {
-                  "proizvodId": product!.proizvodId!,
-                  "korisnikId": 1
-                };
-                _favoritiProvider!.insert(favorit);
-                loadData();
-              },
-              child: Text("Dodaj u favorite")),
-          Text("Favoriti"),
-          Center(
-            child: Container(
-              height: 200,
-              child: ListView(
-                shrinkWrap: true,
-                children: _favoritiList(),
-              ),
-            ),
-          ),
-        ],
-      ),
+      child: Column(children: [
+        Positioned(child: imageFromBase64String(product!.slika!)),
+        Text(product!.naziv!),
+        Text(product!.cijena.toString()),
+        TextButton(
+            onPressed: () {
+              var object = {
+                "korisnikId": korisnik?.korisnikId,
+                "proizvodId": widget.id
+              };
+
+              _favoritiProvider?.insert(object);
+              loadData();
+            },
+            child: Text("Dodaj u favorite")),
+        Text("Favoriti"),
+        Container(
+          height: 200,
+          child: ListView(shrinkWrap: true, children: _loadFavoritesList()),
+        )
+      ]),
     );
     return list;
   }
 
-  List<Widget> _favoritiList() {
-    if (favoriti.length == null) {
+  List<Widget> _loadFavoritesList() {
+    if (lists.length == 0) {
       return [Text("Loading...")];
     }
 
-    List<Widget> list = favoriti
+    List<Widget> list = lists
         .map((x) => Container(
-              child: Row(
+              child: Column(
                 children: [
-                  Text("Proizvod: " + x.proizvodId.toString()),
-                  Text("  Korisnik: " + x.korisnikId.toString()),
+                  Text(x.firstName.toString()),
+                  Text(x.lastName.toString()),
+                  Text(x.username.toString()),
+                  Text(x.email.toString()),
                 ],
               ),
             ))

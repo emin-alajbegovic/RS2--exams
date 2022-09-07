@@ -90,20 +90,10 @@ namespace eProdaja.Services
                 filteredQuery = filteredQuery.Where(x => x.Naziv.Contains(search.Naziv)); 
             }
 
-            if(search.Cijena!=0)
+            if (search.Cijena != 0)
             {
-                filteredQuery = filteredQuery.Where(x => x.Cijena > search.Cijena);
+                filteredQuery = filteredQuery.Where(x => x.Cijena < search.Cijena);
             }
-
-            //if (search.CijenaNaziv != 0)
-            //{
-            //    filteredQuery = filteredQuery.Where(x => x.Cijena > search.CijenaNaziv);
-            //}
-            
-            //if(search.CijenaNaziv.ToString()!="")
-            //{
-            //    filteredQuery = filteredQuery.Where(x => x.Naziv.Contains(search.CijenaNaziv.ToString()));
-            //}
 
             return filteredQuery;
         }

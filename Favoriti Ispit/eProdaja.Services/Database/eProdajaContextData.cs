@@ -85,11 +85,9 @@ namespace eProdaja.Services.Database
             modelBuilder.Entity<NarudzbaStavke>().HasData(new NarudzbaStavke { NarudzbaStavkaId = 5, NarudzbaId = 4, ProizvodId = 1, Kolicina = 1 });
             modelBuilder.Entity<NarudzbaStavke>().HasData(new NarudzbaStavke { NarudzbaStavkaId = 6, NarudzbaId = 4, ProizvodId = 3, Kolicina = 2 });
 
-            modelBuilder.Entity<Favoriti>().HasData(new Favoriti { FavoritiId = 1, KorisnikId = 1, ProizvodId = 1, Datum = DateTime.Now });
-            modelBuilder.Entity<Favoriti>().HasData(new Favoriti { FavoritiId = 2, KorisnikId = 2, ProizvodId = 2, Datum = DateTime.Now });
-            modelBuilder.Entity<Favoriti>().HasData(new Favoriti { FavoritiId = 3, KorisnikId = 2, ProizvodId = 3, Datum = DateTime.Now });
-
-
+            modelBuilder.Entity<Favoriti>().HasData(new Favoriti{ FavoritiId = 1, KorisnikId = 1, ProizvodId = 1, Datum = DateTime.Now });
+            modelBuilder.Entity<Favoriti>().HasData(new Favoriti{ FavoritiId = 2, KorisnikId = 2, ProizvodId = 2, Datum = DateTime.Now });
+            modelBuilder.Entity<Favoriti>().HasData(new Favoriti{ FavoritiId = 3, KorisnikId = 1, ProizvodId = 3, Datum = DateTime.Now });
         }
     }
 }

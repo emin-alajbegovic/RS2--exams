@@ -44,7 +44,6 @@ builder.Services.AddTransient<IVrsteProizvodumService, VrsteProizvodumService>()
 builder.Services.AddTransient<INarudzbeService, NarudzbeService>();
 builder.Services.AddTransient<IFavoritiService, FavoritiService>();
 
-
 builder.Services.AddTransient<IService<eProdaja.Model.Uloge, BaseSearchObject>, BaseService< eProdaja.Model.Uloge, Uloge, BaseSearchObject >>();
 
 

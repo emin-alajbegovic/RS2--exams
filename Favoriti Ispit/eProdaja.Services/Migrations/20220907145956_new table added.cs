@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace eProdaja.Services.Migrations
 {
-    public partial class addedtable : Migration
+    public partial class newtableadded : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,9 +15,9 @@ namespace eProdaja.Services.Migrations
                 {
                     FavoritiId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Datum = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ProizvodId = table.Column<int>(type: "int", nullable: false),
                     KorisnikId = table.Column<int>(type: "int", nullable: false),
-                    ProizvodId = table.Column<int>(type: "int", nullable: false)
+                    Datum = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -41,63 +41,63 @@ namespace eProdaja.Services.Migrations
                 keyColumn: "KorisnikUlogaID",
                 keyValue: 1,
                 column: "DatumIzmjene",
-                value: new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Local));
+                value: new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local));
 
             migrationBuilder.UpdateData(
                 table: "KorisniciUloge",
                 keyColumn: "KorisnikUlogaID",
                 keyValue: 2,
                 column: "DatumIzmjene",
-                value: new DateTime(2022, 8, 21, 0, 0, 0, 0, DateTimeKind.Local));
+                value: new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local));
 
             migrationBuilder.UpdateData(
                 table: "Kupci",
                 keyColumn: "KupacID",
                 keyValue: 1,
                 column: "DatumRegistracije",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2511));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5171));
 
             migrationBuilder.UpdateData(
                 table: "Kupci",
                 keyColumn: "KupacID",
                 keyValue: 2,
                 column: "DatumRegistracije",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2523));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5244));
 
             migrationBuilder.UpdateData(
                 table: "Kupci",
                 keyColumn: "KupacID",
                 keyValue: 3,
                 column: "DatumRegistracije",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2531));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5292));
 
             migrationBuilder.UpdateData(
                 table: "Narudzbe",
                 keyColumn: "NarudzbaID",
                 keyValue: 1,
                 column: "Datum",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2544));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5346));
 
             migrationBuilder.UpdateData(
                 table: "Narudzbe",
                 keyColumn: "NarudzbaID",
                 keyValue: 2,
                 column: "Datum",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2554));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5400));
 
             migrationBuilder.UpdateData(
                 table: "Narudzbe",
                 keyColumn: "NarudzbaID",
                 keyValue: 3,
                 column: "Datum",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2562));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5448));
 
             migrationBuilder.UpdateData(
                 table: "Narudzbe",
                 keyColumn: "NarudzbaID",
                 keyValue: 4,
                 column: "Datum",
-                value: new DateTime(2022, 8, 21, 14, 22, 1, 605, DateTimeKind.Local).AddTicks(2570));
+                value: new DateTime(2022, 9, 7, 16, 59, 55, 429, DateTimeKind.Local).AddTicks(5496));
 
             migrationBuilder.CreateIndex(
                 name: "IX_Favoriti_KorisnikId",

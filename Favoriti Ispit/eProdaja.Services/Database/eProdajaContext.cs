@@ -34,7 +34,6 @@ namespace eProdaja.Services.Database
         public virtual DbSet<VrsteProizvodum> VrsteProizvoda { get; set; } = null!;
         public virtual DbSet<Favoriti> Favoriti { get; set; } = null!;
 
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

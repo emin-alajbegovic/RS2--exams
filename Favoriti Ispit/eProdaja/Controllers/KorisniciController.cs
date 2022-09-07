@@ -11,9 +11,11 @@ namespace eProdaja.Controllers
     [Route("[controller]")]
     public class KorisniciController :  BaseCRUDController<Model.Korisnici, KorisniciSearchObject, KorisniciInsertRequest, KorisniciUpdateRequest>
     {
+        public IKorisniciService korisniciService { get; set; }
         public KorisniciController(IKorisniciService service)
             :base(service)
         {
+            korisniciService = service;
         }
 
         //[Authorize("Administrator")]
@@ -28,5 +30,10 @@ namespace eProdaja.Controllers
             return base.Update(id, update);
         }
 
+        [HttpGet("GetByUsername/{username}")]
+        public Model.Korisnici GetByUsername(string username)
+        {
+            return korisniciService.GetByUsername(username);
+        }
     }
 }
