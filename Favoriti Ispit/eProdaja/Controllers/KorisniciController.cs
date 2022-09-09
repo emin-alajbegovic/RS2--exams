@@ -30,7 +30,7 @@ namespace eProdaja.Controllers
             return base.Update(id, update);
         }
 
-        [HttpGet("GetByUsername/{username}")]
+        [HttpGet("username/{username}")]
         public Model.Korisnici GetByUsername(string username)
         {
             return korisniciService.GetByUsername(username);

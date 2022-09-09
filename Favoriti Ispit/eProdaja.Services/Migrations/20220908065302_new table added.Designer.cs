@@ -12,8 +12,8 @@ using eProdaja.Services.Database;
 namespace eProdaja.Services.Migrations
 {
     [DbContext(typeof(eProdajaContext))]
-    [Migration("20220907150510_seed added")]
-    partial class seedadded
+    [Migration("20220908065302_new table added")]
+    partial class newtableadded
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -144,29 +144,6 @@ namespace eProdaja.Services.Migrations
                     b.HasIndex("ProizvodId");
 
                     b.ToTable("Favoriti");
-
-                    b.HasData(
-                        new
-                        {
-                            FavoritiId = 1,
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8837),
-                            KorisnikId = 1,
-                            ProizvodId = 1
-                        },
-                        new
-                        {
-                            FavoritiId = 2,
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8849),
-                            KorisnikId = 2,
-                            ProizvodId = 2
-                        },
-                        new
-                        {
-                            FavoritiId = 3,
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8859),
-                            KorisnikId = 1,
-                            ProizvodId = 3
-                        });
                 });
 
             modelBuilder.Entity("eProdaja.Services.Database.Izlazi", b =>
@@ -400,14 +377,14 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KorisnikUlogaId = 1,
-                            DatumIzmjene = new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumIzmjene = new DateTime(2022, 9, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 1,
                             UlogaId = 1
                         },
                         new
                         {
                             KorisnikUlogaId = 2,
-                            DatumIzmjene = new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumIzmjene = new DateTime(2022, 9, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             UlogaId = 1
                         });
@@ -466,7 +443,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 1,
-                            DatumRegistracije = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8635),
+                            DatumRegistracije = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8059),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 1",
                             KorisnickoIme = "test",
@@ -478,7 +455,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 2,
-                            DatumRegistracije = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8653),
+                            DatumRegistracije = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8078),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 2",
                             KorisnickoIme = "test1",
@@ -490,7 +467,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 3,
-                            DatumRegistracije = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8663),
+                            DatumRegistracije = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8089),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 3",
                             KorisnickoIme = "test2",
@@ -612,7 +589,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 1,
                             BrojNarudzbe = "344-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8685),
+                            Datum = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8108),
                             KupacId = 1,
                             Otkazano = false,
                             Status = true
@@ -621,7 +598,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 2,
                             BrojNarudzbe = "345-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8702),
+                            Datum = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8122),
                             KupacId = 2,
                             Otkazano = false,
                             Status = true
@@ -630,7 +607,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 3,
                             BrojNarudzbe = "346-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8712),
+                            Datum = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8133),
                             KupacId = 2,
                             Otkazano = false,
                             Status = true
@@ -639,7 +616,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 4,
                             BrojNarudzbe = "347-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8750),
+                            Datum = new DateTime(2022, 9, 8, 8, 53, 1, 102, DateTimeKind.Local).AddTicks(8144),
                             KupacId = 3,
                             Otkazano = false,
                             Status = true

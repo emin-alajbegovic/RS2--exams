@@ -1,5 +1,4 @@
 import 'package:eprodajamobile/providers/cart_provider.dart';
-import 'package:eprodajamobile/providers/emin_provider.dart';
 import 'package:eprodajamobile/providers/favoriti_provider.dart';
 import 'package:eprodajamobile/providers/korisnici_provider.dart';
 import 'package:eprodajamobile/providers/order_provider.dart';
@@ -17,10 +16,9 @@ void main() => runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ProductProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => FavoritiProvider()),
         ChangeNotifierProvider(create: (_) => KorisniciProvider()),
-        ChangeNotifierProvider(create: (_) => EminProvider()),
-        ChangeNotifierProvider(create: (_) => CartProvider()),
         ChangeNotifierProvider(create: (_) => OrderProvider()),
       ],
       child: MaterialApp(

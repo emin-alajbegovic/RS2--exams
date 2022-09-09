@@ -43,22 +43,7 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
-  Future<List<T>> getByUserProizvodId(int id, [dynamic additionalData]) async {
-    var url = Uri.parse("$_baseUrl$_endpoint/GetUsersByProizvod/$id");
-
-    Map<String, String> headers = createHeaders();
-
-    var response = await http!.get(url, headers: headers);
-
-    if (isValidResponseCode(response)) {
-      var data = jsonDecode(response.body);
-      return data.map((x) => fromJson(x)).cast<T>().toList();
-    } else {
-      throw Exception("Exception... handle this gracefully");
-    }
-  }
-
-  Future<T> getByDetailsId(int id) async {
+  Future<T> getDetailsById(int id) async {
     var url = Uri.parse("$_baseUrl$_endpoint/$id");
 
     Map<String, String> headers = createHeaders();
@@ -73,8 +58,8 @@ abstract class BaseProvider<T> with ChangeNotifier {
     }
   }
 
-  Future<T> getUserByUsername(String username) async {
-    var url = Uri.parse("$_baseUrl$_endpoint/GetByUsername/$username");
+  Future<T> getByUsernameId(String username) async {
+    var url = Uri.parse("$_baseUrl$_endpoint/username/$username");
 
     Map<String, String> headers = createHeaders();
 

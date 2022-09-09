@@ -38,10 +38,8 @@ namespace eProdaja.Services
             CreateMap<NarudzbaUpdateRequest, Database.Narudzbe>();
 
             CreateMap<Database.Favoriti, Model.Favoriti>()
-                .ForMember(x=>x.LastName,y=>y.MapFrom(x=>x.Korisnik.Prezime))
-                .ForMember(x=>x.FirstName,y=>y.MapFrom(y=>y.Korisnik.Ime))
-                .ForMember(x=>x.Username,y=>y.MapFrom(y=>y.Korisnik.KorisnickoIme))
-                .ForMember(x=>x.Email,y=>y.MapFrom(y=>y.Korisnik.Email));
+                .ForMember(x=>x.Username, y=>y.MapFrom(x=>x.Korisnik.KorisnickoIme))
+                .ForMember(x=>x.Email,y=>y.MapFrom(x=>x.Korisnik.Email));
             CreateMap<FavoritiUpsertRequest, Database.Favoriti>();
         }
     }

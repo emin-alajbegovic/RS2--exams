@@ -1,4 +1,3 @@
-import 'package:eprodajamobile/providers/korisnici_provider.dart';
 import 'package:eprodajamobile/providers/product_provider.dart';
 import 'package:eprodajamobile/screens/cart/cart_screen.dart';
 import 'package:eprodajamobile/screens/products/product_details_screen.dart';

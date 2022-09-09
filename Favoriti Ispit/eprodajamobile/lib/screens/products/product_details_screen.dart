@@ -1,8 +1,6 @@
-import 'package:eprodajamobile/model/emin.dart';
 import 'package:eprodajamobile/model/favoriti.dart';
 import 'package:eprodajamobile/model/korisnici.dart';
 import 'package:eprodajamobile/model/product.dart';
-import 'package:eprodajamobile/providers/emin_provider.dart';
 import 'package:eprodajamobile/providers/favoriti_provider.dart';
 import 'package:eprodajamobile/providers/korisnici_provider.dart';
 import 'package:eprodajamobile/providers/product_provider.dart';
@@ -27,12 +25,10 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   ProductProvider? _productProvider = null;
   FavoritiProvider? _favoritiProvider = null;
-  EminProvider? _eminProvider = null;
-  Product? product = null;
   KorisniciProvider? _korisniciProvider = null;
-  TextEditingController _searchController = TextEditingController();
+  Product? product = null;
   Korisnici? korisnik = null;
-  List<Emin> lists = [];
+  List<Favoriti> favoritis = [];
 
   @override
   void initState() {
@@ -41,34 +37,31 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     _productProvider = context.read<ProductProvider>();
     _favoritiProvider = context.read<FavoritiProvider>();
     _korisniciProvider = context.read<KorisniciProvider>();
-    _eminProvider = context.read<EminProvider>();
     print("called initState");
     loadData();
     loadUserData();
   }
 
   Future loadData() async {
-    var tmpData = await _productProvider?.getByDetailsId(int.parse(widget.id));
+    var tmpData = await _productProvider?.getDetailsById(int.parse(widget.id));
     setState(() {
       product = tmpData!;
     });
+    loadFAvoritesUserData();
   }
 
   Future loadUserData() async {
     var tmpData = await _korisniciProvider
-        ?.getUserByUsername(Authorization.username.toString());
-    print(tmpData);
+        ?.getByUsernameId(Authorization.username.toString());
     setState(() {
       korisnik = tmpData!;
     });
-    loadUserFavoritesData();
   }
 
-  Future loadUserFavoritesData() async {
-    var tmpData =
-        await _eminProvider?.getByUserProizvodId(int.parse(widget.id));
+  Future loadFAvoritesUserData() async {
+    var tmpData = await _favoritiProvider?.get({"proizvodId": widget.id});
     setState(() {
-      lists = tmpData!;
+      favoritis = tmpData!;
     });
   }
 
@@ -76,14 +69,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   Widget build(BuildContext context) {
     return MasterScreenWidget(
       child: Center(
-        child: SingleChildScrollView(child: _buildProductList()),
+        child: SingleChildScrollView(
+          child: _buildProductList(),
+        ),
       ),
     );
   }
 
   Widget _buildProductList() {
     if (product == null) {
-      return Text("loading...");
+      return Text("Loading..");
     }
 
     Widget list = Container(
@@ -93,36 +88,37 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
         Text(product!.cijena.toString()),
         TextButton(
             onPressed: () {
-              var object = {
-                "korisnikId": korisnik?.korisnikId,
+              var obj = {
+                "korisnikId": korisnik!.korisnikId,
                 "proizvodId": widget.id
               };
+              _favoritiProvider?.insert(obj);
 
-              _favoritiProvider?.insert(object);
               loadData();
             },
             child: Text("Dodaj u favorite")),
-        Text("Favoriti"),
         Container(
           height: 200,
-          child: ListView(shrinkWrap: true, children: _loadFavoritesList()),
+          child: ListView(
+            shrinkWrap: true,
+            children: _buildFavoritesList(),
+          ),
         )
       ]),
     );
+
     return list;
   }
 
-  List<Widget> _loadFavoritesList() {
-    if (lists.length == 0) {
+  List<Widget> _buildFavoritesList() {
+    if (favoritis.length == 0) {
       return [Text("Loading...")];
     }
 
-    List<Widget> list = lists
+    List<Widget> list = favoritis
         .map((x) => Container(
               child: Column(
                 children: [
-                  Text(x.firstName.toString()),
-                  Text(x.lastName.toString()),
                   Text(x.username.toString()),
                   Text(x.email.toString()),
                 ],

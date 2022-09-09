@@ -17,17 +17,22 @@ namespace eProdaja.Services
         {
         }
 
-        public IEnumerable<Model.Favoriti> GetAllUsersByProizvod(int proizvodId)
+        public override IQueryable<Favoriti> AddFilter(IQueryable<Favoriti> query, FavoritiSearchObject search = null)
         {
-            var users = Context.Favoriti.Include(x => x.Korisnik).Where(y => y.ProizvodId == proizvodId).ToList();
+            var filteredQuery = base.AddFilter(query, search);
 
-            if (users == null)
+            if (search.ProizvodId != 0)
             {
-                return null;
+                filteredQuery = filteredQuery.Where(x => x.ProizvodId == search.ProizvodId);
             }
 
-            return Mapper.Map<IEnumerable<Model.Favoriti>>(users);
+            return filteredQuery;
         }
 
+        public override IQueryable<Database.Favoriti> AddInclude(IQueryable<Database.Favoriti> query, FavoritiSearchObject search = null)
+        {
+            query = query.Include(x => x.Korisnik);
+            return query;
+        }
     }
 }

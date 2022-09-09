@@ -147,21 +147,21 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             FavoritiId = 1,
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8837),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8609),
                             KorisnikId = 1,
                             ProizvodId = 1
                         },
                         new
                         {
                             FavoritiId = 2,
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8849),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8624),
                             KorisnikId = 2,
                             ProizvodId = 2
                         },
                         new
                         {
                             FavoritiId = 3,
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8859),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8635),
                             KorisnikId = 1,
                             ProizvodId = 3
                         });
@@ -398,14 +398,14 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KorisnikUlogaId = 1,
-                            DatumIzmjene = new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumIzmjene = new DateTime(2022, 9, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 1,
                             UlogaId = 1
                         },
                         new
                         {
                             KorisnikUlogaId = 2,
-                            DatumIzmjene = new DateTime(2022, 9, 7, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumIzmjene = new DateTime(2022, 9, 8, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             UlogaId = 1
                         });
@@ -464,7 +464,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 1,
-                            DatumRegistracije = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8635),
+                            DatumRegistracije = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8359),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 1",
                             KorisnickoIme = "test",
@@ -476,7 +476,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 2,
-                            DatumRegistracije = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8653),
+                            DatumRegistracije = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8379),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 2",
                             KorisnickoIme = "test1",
@@ -488,7 +488,7 @@ namespace eProdaja.Services.Migrations
                         new
                         {
                             KupacId = 3,
-                            DatumRegistracije = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8663),
+                            DatumRegistracije = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8392),
                             Email = "kupac1@fit.ba",
                             Ime = "Kupac 3",
                             KorisnickoIme = "test2",
@@ -610,7 +610,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 1,
                             BrojNarudzbe = "344-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8685),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8425),
                             KupacId = 1,
                             Otkazano = false,
                             Status = true
@@ -619,7 +619,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 2,
                             BrojNarudzbe = "345-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8702),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8443),
                             KupacId = 2,
                             Otkazano = false,
                             Status = true
@@ -628,7 +628,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 3,
                             BrojNarudzbe = "346-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8712),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8492),
                             KupacId = 2,
                             Otkazano = false,
                             Status = true
@@ -637,7 +637,7 @@ namespace eProdaja.Services.Migrations
                         {
                             NarudzbaId = 4,
                             BrojNarudzbe = "347-2018",
-                            Datum = new DateTime(2022, 9, 7, 17, 5, 10, 152, DateTimeKind.Local).AddTicks(8750),
+                            Datum = new DateTime(2022, 9, 8, 8, 55, 38, 852, DateTimeKind.Local).AddTicks(8507),
                             KupacId = 3,
                             Otkazano = false,
                             Status = true

@@ -8,9 +8,6 @@ part 'korisnici.g.dart';
 class Korisnici {
   int? korisnikId;
   String? ime;
-  String? prezime;
-  String? email;
-  String? korisnickoIme;
 
   Korisnici() {}
 

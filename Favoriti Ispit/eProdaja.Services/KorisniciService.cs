@@ -135,5 +135,6 @@ namespace eProdaja.Services
 
             return Mapper.Map<Model.Korisnici>(entity);
         }
+
     }
 }

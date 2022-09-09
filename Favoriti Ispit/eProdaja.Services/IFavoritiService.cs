@@ -11,6 +11,5 @@ namespace eProdaja.Services
 {
     public interface IFavoritiService : ICRUDService<Favoriti, FavoritiSearchObject, FavoritiUpsertRequest, FavoritiUpsertRequest>
     {
-        IEnumerable<Favoriti> GetAllUsersByProizvod(int proizvodId);
     }
 }
